@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澜码API Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>澜码API Demo</h1>
+        
+        <!-- 会话信息区域 -->
+        <div class="session-info">
+            <h3>会话信息</h3>
+            <div class="status-section">
+                <label for="connectionStatus">API 连结状态:</label>
+                <input type="text" id="connectionStatus" readonly value="正在连接中...">
+            </div>
+        </div>
+        
+        <!-- 操作区域 -->
+        <div class="operation-area">
+            <h3>操作区域</h3>
+            <div class="input-section">
+                <label for="userInput">和智能体问答:</label>
+                <div class="input-group">
+                    <input type="text" id="userInput" placeholder="请输入您的问题...">
+                    <button id="submitBtn">发送</button>
+                </div>
+            </div>
+            
+            <!-- 智能体回复区域 -->
+            <div class="output-section">
+                <label for="outputLog">智能体回复:</label>
+                <textarea id="outputLog" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
