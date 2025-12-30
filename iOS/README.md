@@ -95,6 +95,7 @@ struct Lanma_API_DemoApp: App {
 @State private var isLoading = false        // 加载状态
 @State private var str_session_sn = ""       // 会话标识符
 @State private var agentReplies: [String] = [] // 对话记录
+@FocusState private var isTextFieldFocused: Bool  // 键盘焦点控制
 ```
 
 **UI组件层次**：
@@ -153,6 +154,7 @@ Body:
    - 加载状态指示
    - 自动滚动到最新消息
    - 时间戳显示
+   - 智能键盘管理（点击空白收起/发送后自动收起）
 
 ## 🛠️ 开发环境要求
 
@@ -211,6 +213,7 @@ Body:
 2. **发送消息**：点击"发送"按钮或按回车键
 3. **等待回复**：智能体将实时返回答案
 4. **查看历史**：所有对话记录保存在上方区域
+5. **收起键盘**：点击屏幕空白区域或发送消息后自动收起
 
 #### 🔄 故障排除
 | 问题 | 解决方案 |
@@ -274,6 +277,7 @@ request.setValue("26ae4908-ec15-49fb-bd4f-9181bfc3bd71", forHTTPHeaderField: "Au
 - ⚠️ 错误处理需要更加细化和用户友好
 - 📱 缺少网络状态检测机制
 - 💾 对话记录未实现本地持久化
+- ✅ 已实现智能键盘管理（2025-12-30）
 
 ## 🗺️ 发展路线图
 

@@ -52,6 +52,8 @@ struct ContentView: View {
     
     // MARK: - View Body
     
+    @FocusState private var isTextFieldFocused: Bool
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -63,7 +65,7 @@ struct ContentView: View {
                         .padding()
                         .background(Circle().fill(Color.blue.opacity(0.1)))
                         .shadow(radius: 10)
-                    
+
                     Text("API Demo")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -194,8 +196,12 @@ struct ContentView: View {
                     Divider()
                     
                     HStack(spacing: 12) {
-                        TextField("输入您的问题...", text: $inputText)
+                        TextField("输入您的问题...", text: $inputText, axis: .vertical)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .focused($isTextFieldFocused)
+                            .onSubmit {
+                                sendMessage()
+                            }
                         
                         Button("发送") {
                             sendMessage()
@@ -212,6 +218,9 @@ struct ContentView: View {
                 .background(Color(.systemBackground))
             }
             .background(Color(.systemGray6))
+            .onTapGesture {
+                isTextFieldFocused = false
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -353,9 +362,10 @@ struct ContentView: View {
     
     private func sendMessage() {
         guard !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
-        
+
         let userQuery = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         inputText = ""
+        isTextFieldFocused = false
         
         // 添加用户消息
         agentReplies.append("用户问题: \(userQuery)")
