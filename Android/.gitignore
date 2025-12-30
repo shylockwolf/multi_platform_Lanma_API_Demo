@@ -1,0 +1,83 @@
+# Gradle build directory
+.gradle/
+build/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Android Studio specific files
+local.properties
+.DS_Store
+
+# Emulator files
+*.apk
+*.ap_*
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Test files
+*test*
+
+# Generated files
+*.generated
+*.class
+
+# Dependency directories
+.gradle/8.13/
+
+# Backup files
+*.bak
+*.backup
+
+# Misc
+.env
+.env.local
+.env.*.local
+
+# Exclude everything except necessary files and directories
+# But first include the files we want to keep
+!README* !build.gradle.kts
+!settings.gradle.kts
+!gradle.properties
+!gradlew
+!gradlew.bat
+!local.properties
+!gradle/gradle-wrapper.properties
+!gradle/gradle-wrapper.jar
+!gradle/libs.versions.toml
+!app/
+
+# Include specific files in app directory
+!app/src/
+!app/build.gradle.kts
+!app/AndroidManifest.xml
+
+# Exclude unnecessary directories within app
+app/build/
+app/.gradle/
+app/.idea/
+
+# Exclude specific file types in app/src
+app/src/**/*.test
+app/src/**/*.log
+app/src/**/.DS_Store
